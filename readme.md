@@ -1,4 +1,22 @@
+# Docker Tutorial
+
+[Inspiration : Net Ninja](https://www.youtube.com/playlist?list=PL4cUxeGkcC9hxjeEtdHFNYMtCpjNBm3h7)
+
+[Shaun's source code](https://github.com/iamshaunjp/docker-crash-course)
+
 ## Takeaways
+
+### Deletion
+```bash
+# remove every image, container, volume
+sudo docker system prune -a
+```
+
+### Listing
+```
+# list all containers, exclude -a to show only running containers
+sudo docker ps -a
+```
 
 ```markdown
 # -rm removes the container after it has been stopped
@@ -16,14 +34,22 @@ sudo docker run --name myapp_c -p 4000:5000 -rm myapp_image
 sudo docker run --name myapp_c -p 4000:5000 -rm -v /home/dev/Desktop/pro/self tut/docker-tut/api:/app myapp_image
 ```
 
-
+### Volume for node_modules backup
 ```markdown
 # need to add exception volume for node_modules
 # -v /app/node_modules
-sudo docker run --name myapp_c -p 4000:5000 -rm -v /home/dev/Desktop/pro/self tut/docker-tut/api:/app **-v /app/node_modules** myapp_image
+sudo docker run --name myapp_c -p 4000:5000 -rm -v /home/dev/Desktop/pro/self tut/docker-tut/api:/app -v /app/node_modules myapp_image
 ```
 
+### Compose
+```markdown
+# just run the damn thing in a single command
+# although requires a config file called docker-compose.yaml or docker-compose.yml
+docker compose up
+```
 
-![docker cheat sheet](dockercheatsheet8.png)
+### Official Dockerfile screenshot for reference
+![screenshot of docker file in official docs](/assets/Screenshot%20from%202022-06-03%2014-22-08.png)
 
-
+### Docker cheatsheet
+![docker cheat sheet](/assets/dockercheatsheet8.png)
