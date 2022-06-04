@@ -13,12 +13,12 @@ sudo docker system prune -a
 ```
 
 ### Listing
-```
+```bash
 # list all containers, exclude -a to show only running containers
 sudo docker ps -a
 ```
 
-```markdown
+```bash
 # -rm removes the container after it has been stopped
 # 4000 is host port, 5000 is container's exposed port
 # _c are container names and _images are images
@@ -26,7 +26,7 @@ sudo docker run --name myapp_c -p 4000:5000 -rm myapp_image
 ```
 
 ### Volumes Intro
-```markdown
+```bash
 # -v first path is absolute path; you can copy from vscode lhs sidebar
 # e.g : /home/dev/Desktop/pro/self tut/docker-tut/api
 # -v takes 2 args separated by colon 
@@ -35,17 +35,23 @@ sudo docker run --name myapp_c -p 4000:5000 -rm -v /home/dev/Desktop/pro/self tu
 ```
 
 ### Volume for node_modules backup
-```markdown
+```bash
 # need to add exception volume for node_modules
 # -v /app/node_modules
 sudo docker run --name myapp_c -p 4000:5000 -rm -v /home/dev/Desktop/pro/self tut/docker-tut/api:/app -v /app/node_modules myapp_image
 ```
 
 ### Compose
-```markdown
+```bash
 # just run the damn thing in a single command
 # although requires a config file called docker-compose.yaml or docker-compose.yml
-docker compose up
+sudo docker compose up
+```
+
+### Compose : Remove images and volumes
+```bash
+# remove images, container, and volumes on compose down
+sudo docker compose down -rmi all -v
 ```
 
 ### Official Dockerfile screenshot for reference
